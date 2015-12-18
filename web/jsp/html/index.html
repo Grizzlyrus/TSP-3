@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<h1>Web Application</h1>
+<p>
+    Удаление концевых символов (первый аргумент – строка, второй – количество символов, которые надо удалить, результат – уменьшенная строка)
+</p>
+<form action="result.html" id="myForm">
+    <fieldset>
+        <legend>Удаление концевых символов</legend>
+        <p>
+            <label for="firstString">Строка</label>
+            <input type="number" id="firstString" name="firstString" placeholder="Введите строку" autofocus required/>
+        </p>
+        <p>
+            <label for="numberString">Число</label>
+            <input type="number" id="numberString" name="numberString" placeholder="Введите число"/>
+        </p>
+    </fieldset>
+    <!--<p>
+    <input type="submit" value="Подтвердить"/>
+    </p> -->
+    <p>
+        <button class="submit" type="submit" onclick="validate()">Подтвердить</button>
+    </p>
+</form>
+<script>
+    function validate(){
+        var input = document.getElementById("numberString");
+        var num = input.value;
+        var inputText = document.getElementById("firstString");
+        var textString = inputText.value;
+        if (num == ""){
+            input.setCustomValidity("Введите число");
+        }  else if(num < 0){
+            input.setCustomValidity("Число не должно быть отрицательным");
+        } else if(num > textString.length){
+            input.setCustomValidity("Число не должно превышать длину строки");
+        } else if(num.indexOf(".") != -1){
+            input.setCustomValidity("Введите целое число");
+        } else {
+            input.setCustomValidity("");
+        }
+        if (textString == ""){
+            inputText.setCustomValidity("Строка не должна быть пустой");
+        } else {
+            inputText.setCustomValidity("");
+        }
+    }
+</script>
+</body>
+</html>
